@@ -103,6 +103,10 @@ const InfoPanel = (): JSX.Element => {
         </Center>
       </HideIf>
       <HideIf hide={!gameState.started || gameState.gameOver}>
+        <h2>Level</h2>
+        <ScoreNumber>{gameState.level}</ScoreNumber>
+      </HideIf>
+      <HideIf hide={!gameState.started || gameState.gameOver}>
         <h2>Score</h2>
         <ScoreNumber>{gameState.score}</ScoreNumber>
       </HideIf>
