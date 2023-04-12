@@ -16,8 +16,8 @@ import {
   RightSideContainer,
   BlueBackground,
 } from "./styles";
-import BoardCells from "@/components/BoardCells/BoardCells";
-import InfoPanel from "@/components/InfoPanel/InfoPanel";
+import BoardCells from "@/components/Tetris/BoardCells/BoardCells";
+import InfoPanel from "@/components/Tetris/InfoPanel/InfoPanel";
 
 const kanit = Kanit({ subsets: ["latin"], weight: "400" });
 

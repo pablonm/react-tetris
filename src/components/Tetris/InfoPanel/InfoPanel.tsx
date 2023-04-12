@@ -20,7 +20,7 @@ import {
   EMPTY_DISPLAY_CELLS_4x3,
 } from "@/helpers/tetris.constants";
 
-const CellNoSSR = dynamic(() => import("@/components/BoardCells/Cell/Cell"), {
+const CellNoSSR = dynamic(() => import("@/components/Tetris/BoardCells/Cell/Cell"), {
   ssr: false,
 });
 

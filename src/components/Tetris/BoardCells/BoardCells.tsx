@@ -4,7 +4,7 @@ import { HIDDEN_ROWS } from "@/helpers/tetris.constants";
 import { isTetriminoInPosition } from "@/helpers/tetris.helpers";
 import { ContainerDiv, RowDiv, CellDiv } from "./styles";
 
-const CellNoSSR = dynamic(() => import("@/components/BoardCells/Cell/Cell"), {
+const CellNoSSR = dynamic(() => import("@/components/Tetris/BoardCells/Cell/Cell"), {
   ssr: false,
 });
 
