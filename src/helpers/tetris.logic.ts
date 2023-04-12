@@ -63,6 +63,7 @@ export const getInitialGameState = (): GameState => {
     gameOver: false,
     activeTetromino: {
       ...newState.activeTetromino,
+      type: firstTetromino,
       position: INITIAl_TETROMINO_POSITIONS[firstTetromino],
       projectedPlacePosition: getProyectedPlacePosition(
         INITIAl_TETROMINO_POSITIONS[firstTetromino],
