@@ -9,7 +9,7 @@ Tetris game made on React + NextJS + Typescript as a practice.
 https://react-tetris-alpha.vercel.app/
 
 ## Preview
-![](preview.png)
+<img src="preview.png" alt="Preview" width="300" />
 
 ## Code
 
