@@ -21,6 +21,12 @@ import InfoPanel from "@/components/InfoPanel/InfoPanel";
 
 const kanit = Kanit({ subsets: ["latin"], weight: "400" });
 
+let pressedKeys: { [key in string]: boolean } = {};
+let moveCooldown = false;
+let moveCooldownTimeout: NodeJS.Timeout;
+const INPUT_INTERVAL = 50;
+const MOVE_COOLDOWN = 200;
+
 const Tetris = () => {
   const [playMoveSFX] = useSound("/sfx/move.wav", { volume: 0.25 });
   const [playRotateSFX] = useSound("/sfx/rotate.wav", { volume: 0.25 });
@@ -73,16 +79,46 @@ const Tetris = () => {
   ]);
 
   useEffect(() => {
+    let interval = setInterval(() => {
+      if (pressedKeys["ArrowLeft"] && !moveCooldown) move("left");
+      if (pressedKeys["ArrowRight"] && !moveCooldown) move("right");
+    }, INPUT_INTERVAL);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [rotate, start, move, fastDrop, hardDrop]);
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === "Enter" && !e.repeat) start();
-      if (e.code === "ArrowLeft") move("left");
-      if (e.code === "ArrowRight") move("right");
+      if (e.code === "ArrowLeft" && !e.repeat) {
+        clearTimeout(moveCooldownTimeout);
+        moveCooldown = true;
+        moveCooldownTimeout = setTimeout(() => {
+          moveCooldown = false;
+        }, MOVE_COOLDOWN);
+        move("left");
+      }
+      if (e.code === "ArrowRight" && !e.repeat) {
+        clearTimeout(moveCooldownTimeout);
+        moveCooldown = true;
+        moveCooldownTimeout = setTimeout(() => {
+          moveCooldown = false;
+        }, MOVE_COOLDOWN);
+        move("right");
+      }
       if (e.code === "KeyZ" && !e.repeat) rotate("left");
       if (e.code === "KeyX" && !e.repeat) rotate("right");
       if (e.code === "ArrowDown") fastDrop(true);
       if (e.code === "ArrowUp" && !e.repeat) hardDrop();
+      pressedKeys[e.code] = true;
     };
     const handleKeyUp = (e: KeyboardEvent) => {
+      pressedKeys[e.code] = false;
+      if (e.code === "ArrowLeft" || e.code === "ArrowRight") {
+        clearTimeout(moveCooldownTimeout);
+        moveCooldown = false;
+      }
       if (e.code === "ArrowDown") fastDrop(false);
     };
     document.addEventListener("keydown", handleKeyDown, false);
@@ -117,7 +153,12 @@ const Tetris = () => {
             </StartGameContainer>
           ) : (
             <>
-              <Sound url="/sfx/BGM.mp3" playStatus={"PLAYING"} loop volume={20} />
+              <Sound
+                url="/sfx/BGM.mp3"
+                playStatus={"PLAYING"}
+                loop
+                volume={20}
+              />
               <BoardCells />
             </>
           )}
