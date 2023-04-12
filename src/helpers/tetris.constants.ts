@@ -382,6 +382,7 @@ export const EMPTY_DISPLAY_CELLS_3x3 = [
   [null, null, null],
   [null, null, null],
 ];
+
 export const EMPTY_DISPLAY_CELLS_4x3 = [
   [null, null, null, null],
   [null, null, null, null],

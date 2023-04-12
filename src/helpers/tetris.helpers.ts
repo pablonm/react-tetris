@@ -1,10 +1,16 @@
 import { HIDDEN_ROWS, ALL_TETROMINOS } from "@/helpers/tetris.constants";
 import { shuffleArray } from "@/helpers/arrays";
 
+/*
+ ** Get the randomized list of tetrominos to use in the next pieces
+ */
 export const getNextTetrominos = (): Tetromino[] => {
   return shuffleArray(ALL_TETROMINOS);
 };
 
+/*
+ ** Get the next position of a tetromino based on the direction of movement
+ */
 export const getNextTetrominoPosition = (
   direction: "down" | "left" | "right",
   position: TetrominoPosition
@@ -20,6 +26,9 @@ export const getNextTetrominoPosition = (
   ) as TetrominoPosition;
 };
 
+/*
+ ** Gets the min and max positions of row and col of the position of a tetromino
+ */
 export const getTetrominoPositionBounds = (
   position: TetrominoPosition
 ): [number, number, number, number] => {
@@ -36,6 +45,9 @@ export const getTetrominoPositionBounds = (
   return [minRow, maxRow, minCol, maxCol];
 };
 
+/*
+ ** Checks if there is a tetromino in the given position
+ */
 export const isTetriminoInPosition = (
   position: TetrominoPosition,
   point: BoardPoint
@@ -48,6 +60,9 @@ export const isTetriminoInPosition = (
   });
 };
 
+/*
+ ** Checks if the tetromino in the given position is touching a placed tetromino or the bottom of the board
+ */
 export const isTouchingPlacedTetriminosOrBottom = (
   position: TetrominoPosition,
   placedTetrominos: Board
@@ -61,6 +76,10 @@ export const isTouchingPlacedTetriminosOrBottom = (
   });
 };
 
+/*
+ ** Checks if the given position for a tetromino is valid
+ ** which means that it is not outside the board or touching a placed tetromino
+ */
 export const isInvalidTetrominoPosition = (
   position: TetrominoPosition,
   placedTetrominos: Board
@@ -78,12 +97,19 @@ export const isInvalidTetrominoPosition = (
   });
 };
 
+/*
+ ** Returns the tick interval time based on the level
+ ** It uses the formula from the original game
+ */
 export const getTickTime = (level: number, fastDrop: boolean): number => {
   return (
     Math.pow(0.8 - (level - 1) * 0.007, level - 1) * (fastDrop ? 100 : 1000)
   );
 };
 
+/*
+ ** Returns the position the active tetromino would be placed if it was dropped
+ */
 export const getProyectedPlacePosition = (
   position: TetrominoPosition,
   placedTetrominos: Board
@@ -98,6 +124,6 @@ export const getProyectedPlacePosition = (
     nextPosition = getNextTetrominoPosition("down", nextPosition);
   }
   if (!isInvalidTetrominoPosition(nextPosition, placedTetrominos))
-    return nextPosition
+    return nextPosition;
   return previosPosition;
 };

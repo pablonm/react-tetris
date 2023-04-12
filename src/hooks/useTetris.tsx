@@ -77,7 +77,6 @@ const gameStateReducer = (
 
     case "TICK":
       if (!state.started) return state;
-      //   console.log("### TICK", state);
       return checkTetrominoLocked(
         placeLockedTetromino(moveTetrominoDown(state))
       );
