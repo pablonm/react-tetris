@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { useTetrisActions, useTetris } from "@/hooks/useTetris";
 import { GameOverContainer, NameInput, SubmitScoreButton, StatusText } from "./styles";
 

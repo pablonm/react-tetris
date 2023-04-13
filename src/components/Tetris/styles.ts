@@ -11,7 +11,7 @@ export const Layout = styled.div`
 export const Center = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 
 export const BoardContainer = styled.div`
   height: 100%;
@@ -76,4 +76,8 @@ export const PlayButton = styled.div`
     background-color: #6473ff;
     color: black;
   }
+`;
+
+export const NoMobile = styled.div`
+  margin-top: 50px;
 `;

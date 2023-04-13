@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import useSound from "use-sound";
 import { Kanit } from "@next/font/google";
 import Sound from "react-sound";
+import { isMobile } from "react-device-detect";
 
 import { useTetrisActions, useTetris } from "@/hooks/useTetris";
 import {
   Layout,
   Board,
   Center,
+  NoMobile,
   RightSide,
   PlayButton,
   BoardContainer,
@@ -130,6 +132,15 @@ const Tetris = () => {
   }, [rotate, start, move, fastDrop, hardDrop]);
 
   const handleStartClick = () => start();
+
+  if (isMobile)
+    return (
+      <Layout className={kanit.className}>
+        <NoMobile>
+          <div>Sorry, this game only works on desktop</div>
+        </NoMobile>
+      </Layout>
+    );
 
   return (
     <Layout className={kanit.className}>
