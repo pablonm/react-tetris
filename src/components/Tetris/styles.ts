@@ -48,7 +48,7 @@ export const BlueBackground = styled.div`
   pointer-events: none;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: -1;
 `;
 
 export const StartGameContainer = styled.div`
@@ -77,15 +77,3 @@ export const PlayButton = styled.div`
     color: black;
   }
 `;
-
-export const GameOverContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  color: #6473ff;
-  margin-bottom: 40px;
-
-  > h1 {
-    margin-bottom: 40px;
-  }
-`

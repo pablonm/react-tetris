@@ -11,13 +11,13 @@ import {
   RightSide,
   PlayButton,
   BoardContainer,
-  GameOverContainer,
   StartGameContainer,
   RightSideContainer,
   BlueBackground,
 } from "./styles";
 import BoardCells from "@/components/Tetris/BoardCells/BoardCells";
 import InfoPanel from "@/components/Tetris/InfoPanel/InfoPanel";
+import GameOver from "@/components/Tetris/GameOver/GameOver";
 
 const kanit = Kanit({ subsets: ["latin"], weight: "400" });
 
@@ -138,13 +138,7 @@ const Tetris = () => {
           {!gameState.started ? (
             <StartGameContainer>
               <BlueBackground />
-              {gameState.gameOver && (
-                <GameOverContainer>
-                  <h1>Game Over!</h1>
-                  <h3>Your Score</h3>
-                  <h2>{gameState.score}</h2>
-                </GameOverContainer>
-              )}
+              {gameState.gameOver && <GameOver />}
               <Center>
                 <PlayButton onClick={handleStartClick}>
                   {gameState.gameOver ? "Play Again" : "Play"}

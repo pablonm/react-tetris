@@ -26,6 +26,7 @@ type TetrisActionsContext = {
   start: () => void;
   fastDrop: (active: boolean) => void;
   hardDrop: () => void;
+  setScoreId: (id: string) => void;
   registerCallback: (name: TetrisCallbackName, callback: () => void) => void;
 };
 
@@ -40,6 +41,7 @@ type GameStateReducerAction = {
     | "TICK"
     | "FAST_DROP"
     | "HARD_DROP"
+    | "SET_SCORE_ID"
     | "REGISTER_CALLBACK";
   payload?: any;
 };
@@ -73,7 +75,17 @@ const gameStateReducer = (
       return rotateTetromino(state, action.payload);
 
     case "REGISTER_CALLBACK":
-      return registerCallback(state, action.payload.name, action.payload.callback)
+      return registerCallback(
+        state,
+        action.payload.name,
+        action.payload.callback
+      );
+
+    case "SET_SCORE_ID":
+      return {
+        ...state,
+        scoreId: action.payload,
+      };
 
     case "TICK":
       if (!state.started) return state;
@@ -162,10 +174,20 @@ export const TetrisProvider: React.FC<React.PropsWithChildren> = ({
     [dispatchGameStateAction]
   );
 
+  const setScoreId = useCallback(
+    (id: string) => {
+      dispatchGameStateAction({
+        type: "SET_SCORE_ID",
+        payload: id,
+      });
+    },
+    [dispatchGameStateAction]
+  );
+
   return (
     <TetrisGameStateContext.Provider value={gameState}>
       <TetrisActionsContext.Provider
-        value={{ rotate, move, start, fastDrop, hardDrop, registerCallback }}
+        value={{ rotate, move, start, fastDrop, hardDrop, registerCallback, setScoreId }}
       >
         {children}
       </TetrisActionsContext.Provider>
@@ -179,7 +201,7 @@ export const useTetris = (): GameState => {
 };
 
 export const useTetrisActions = () => {
-  const { rotate, move, start, fastDrop, hardDrop, registerCallback } =
+  const { rotate, move, start, fastDrop, hardDrop, registerCallback, setScoreId } =
     useContext(TetrisActionsContext);
-  return { rotate, move, start, fastDrop, hardDrop, registerCallback };
+  return { rotate, move, start, fastDrop, hardDrop, registerCallback, setScoreId };
 };

@@ -87,6 +87,7 @@ type TetrisCallbacks = { [key in TetrisCallbackName]: () => void | null };
 type GameState = {
   started: boolean;
   gameOver: boolean;
+  scoreId: string | null;
   level: number;
   levelProgress: number;
   callbacks: TetrisCallbacks;

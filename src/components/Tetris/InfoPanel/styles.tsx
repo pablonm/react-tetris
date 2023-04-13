@@ -6,10 +6,9 @@ export const Center = styled.div`
   gap: 10px;
 `;
 
-export const Container = styled.div`
+export const InfoPanelContainer = styled.div`
   color: #6473ff;
   padding: 20px;
-  display: flex;
   flex-direction: column;
   gap: 20px;
   height: 100%;
@@ -17,20 +16,8 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const NextContainer = styled.div<{ shrink: boolean }>`
-  margin-top: 20px;
-  width: ${(prop) => (prop.shrink ? "75%" : "100%")};
-`;
-
-export const NextRow = styled.div`
-  display: flex;
-  flex: 1;
-`;
-
-export const NextCell = styled.div`
-  text-align: center;
-  flex: 1;
-  aspect-ratio: 1 / 1;
+export const Content = styled.div`
+  height: 70%;
 `;
 
 export const Key = styled.span`
@@ -47,8 +34,10 @@ export const Key = styled.span`
 `;
 
 export const ControlsContainer = styled.div`
+  height: 30%;
   display: flex;
   flex-direction: column;
+  justify-content: end;
   gap: 10px;
 `;
 
@@ -56,13 +45,3 @@ export const ControlRow = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
-export const ScoreNumber = styled.div`
-  font-size: 2em;
-  font-weight: bold;
-`;
-
-export const HideIf = styled.div<{hide: boolean}>`
-  visibility: ${(prop) => (prop.hide ? "hidden" : "visible")};
-  z-index: 99;
-`

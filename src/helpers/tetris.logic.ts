@@ -30,6 +30,7 @@ export const getInitialGameState = (): GameState => {
     started: false,
     gameOver: false,
     level: 1,
+    scoreId: null,
     levelProgress: 0,
     score: 0,
     fastDrop: false,
