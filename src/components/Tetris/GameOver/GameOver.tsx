@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTetrisActions, useTetris } from "@/hooks/useTetris";
 import { GameOverContainer, NameInput, SubmitScoreButton, StatusText } from "./styles";
+import { setup } from "@/lib/csrf";
 
 const GameOver = (): JSX.Element => {
   const gameState = useTetris();
@@ -52,5 +53,9 @@ const GameOver = (): JSX.Element => {
     </GameOverContainer>
   );
 };
+
+export const getServerSideProps = setup(async () => {
+  return { props: {} };
+});
 
 export default GameOver;

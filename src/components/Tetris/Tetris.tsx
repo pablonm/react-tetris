@@ -29,7 +29,7 @@ let moveCooldownTimeout: NodeJS.Timeout;
 const INPUT_INTERVAL = 50;
 const MOVE_COOLDOWN = 200;
 
-const Tetris = () => {
+const Tetris = (): JSX.Element => {
   const [playMoveSFX] = useSound("/sfx/move.wav", { volume: 0.25 });
   const [playRotateSFX] = useSound("/sfx/rotate.wav", { volume: 0.25 });
   const [playPlaceSFX] = useSound("/sfx/place.wav", { volume: 0.25 });
