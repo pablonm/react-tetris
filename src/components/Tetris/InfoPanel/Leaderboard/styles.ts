@@ -16,7 +16,7 @@ export const ScoresContainer = styled.div`
   flex: 1;
 `;
 
-export const ScoreRow = styled.div<{ isHighlighted?: boolean; key: string }>`
+export const ScoreRow = styled.div<{ children: any,  isHighlighted?: boolean; key: string }>`
   display: flex;
   justify-content: space-between;
   background-color: ${(props) =>

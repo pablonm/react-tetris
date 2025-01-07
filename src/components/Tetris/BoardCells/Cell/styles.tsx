@@ -4,6 +4,7 @@ type CellContainerProps = {
   cellColor: string;
   isEmpty?: boolean;
   isProjection?: boolean;
+  children: any;
 };
 
 type CellInnerProps = {

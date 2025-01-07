@@ -10,17 +10,17 @@ export const Center = styled.div`
   gap: 10px;
 `;
 
-export const NextContainer = styled.div<{ shrink: boolean }>`
+export const NextContainer = styled.div<{ children: any, shrink: boolean }>`
   margin-top: 20px;
   width: ${(prop) => (prop.shrink ? "75%" : "100%")};
 `;
 
-export const NextRow = styled.div`
+export const NextRow = styled.div<{ children: any }>`
   display: flex;
   flex: 1;
 `;
 
-export const NextCell = styled.div`
+export const NextCell = styled.div<{ children: any }>`
   text-align: center;
   flex: 1;
   aspect-ratio: 1 / 1;

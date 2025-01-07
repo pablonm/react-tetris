@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Layout = styled.div`
+export const Layout = styled.div<{ children: any, className: string }>`
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@ export const StartGameContainer = styled.div`
   }
 `;
 
-export const PlayButton = styled.div`
+export const PlayButton = styled.div<{ children: any, onClick: any }>`
   border: 1px solid #6473ff;
   color: #6473ff;
   background-color: transparent;

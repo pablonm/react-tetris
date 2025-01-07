@@ -6,12 +6,12 @@ export const ContainerDiv = styled.div`
   flex-direction: column;
 `;
 
-export const RowDiv = styled.div`
+export const RowDiv = styled.div<{ children: any, key: string }>`
   display: flex;
   flex: 1;
 `;
 
-export const CellDiv = styled.div`
+export const CellDiv = styled.div<{ children: any, key: string }>`
   text-align: center;
   flex: 1;
 `;

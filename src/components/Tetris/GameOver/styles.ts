@@ -9,7 +9,7 @@ export const GameOverContainer = styled.div`
   }
 `;
 
-export const NameInput = styled.input`
+export const NameInput = styled.input<{ maxLength: number, onChange: any, placeholder: string }>`
   width: 200px;
   border: 1px solid #6473ff;
   background-color: black;
@@ -29,7 +29,7 @@ export const NameInput = styled.input`
   }
 `;
 
-export const SubmitScoreButton = styled.div`
+export const SubmitScoreButton = styled.div<{ children: any, onClick: any }>`
   margin: auto;
   border: 1px solid #6473ff;
   color: #6473ff;
