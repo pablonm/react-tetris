@@ -24,7 +24,7 @@ const Leaderboard = (): JSX.Element => {
     <LeaderboardContainer>
       <h2>Leaderboard</h2>
       <ScoresContainer>
-        {scores.map((score: any, index) => (
+        {scores && scores.map((score: any, index) => (
           <ScoreRow
             isHighlighted={score.id === gameState.scoreId}
             key={score.id}
