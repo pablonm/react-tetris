@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import useSound from "use-sound";
 import { Kanit } from "@next/font/google";
-import Sound from "react-sound";
 import { isMobile } from "react-device-detect";
 
 import { useTetrisActions, useTetris } from "@/hooks/useTetris";
@@ -158,12 +157,7 @@ const Tetris = (): JSX.Element => {
             </StartGameContainer>
           ) : (
             <>
-              <Sound
-                url="/sfx/BGM.mp3"
-                playStatus={"PLAYING"}
-                loop
-                volume={20}
-              />
+              <audio src="/sfx/BGM.mp3" autoPlay loop></audio>
               <BoardCells />
             </>
           )}
